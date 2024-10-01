@@ -19,7 +19,9 @@
             <div class="col-sm-6 offset-3">
 
                 <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User Forms</legend>
-                <form>
+                
+                <!-- passing form data to action.php where GET value  form is add_user and method is post -->
+                <form action="action.php?form=add_user" method="post">
 
                     <div class="form-group">
                         <label>FullName</label>
