@@ -42,6 +42,7 @@
                         <input type="text" name="address" class="form-control">
                     </div>
 
+                    <input type="submit" style="margin-left:40%;"  class="col-sm-3 btn btn-success pull-right" name="btn_user_form">
 
                 </form>
 
