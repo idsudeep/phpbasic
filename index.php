@@ -15,20 +15,38 @@
 <body>
     <div class="container">
         <!-- offset used here to take a margin from both side and it will stick into center   -->
-    <div class="row">
-    <div class="col-sm-6 offset-3">>
-            <form>
-                
+        <div class="row">
+            <div class="col-sm-6 offset-3">
+
+                <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User Forms</legend>
+                <form>
+
                     <div class="form-group">
                         <label>FullName</label>
                         <input type="text" name="fname" class="form-control">
                     </div>
-            
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input type="number" name="contact" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" name="address" class="form-control">
+                    </div>
 
-            </form>
 
+                </form>
+
+            </div>
         </div>
-    </div>
     </div>
 
 
