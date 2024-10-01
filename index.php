@@ -15,9 +15,20 @@
 <body>
     <div class="container">
         <!-- offset used here to take a margin from both side and it will stick into center   -->
-        <div class="col-sm-8 off-set-2">
+    <div class="row">
+    <div class="col-sm-6 offset-3">>
+            <form>
+                
+                    <div class="form-group">
+                        <label>FullName</label>
+                        <input type="text" name="fname" class="form-control">
+                    </div>
+            
+
+            </form>
 
         </div>
+    </div>
     </div>
 
 
