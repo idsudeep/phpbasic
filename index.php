@@ -17,9 +17,17 @@
         <!-- offset used here to take a margin from both side and it will stick into center   -->
         <div class="row">
             <div class="col-sm-6 offset-3">
-
+                <span style="text-align:center;">
+                    <?php if (isset($_GET['alert'])) {
+                        if ($_GET['alert'] == 'success') {
+                            echo "<h4 style=color:green; >"."User Created Successfully"."</h4>";
+                        } else {
+                            echo "Try Again";
+                        }
+                    } ?>
+                </span>
                 <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User Forms</legend>
-                
+
                 <!-- passing form data to action.php where GET value  form is add_user and method is post -->
                 <form action="action.php?form=add_user" method="post">
 
@@ -44,7 +52,7 @@
                         <input type="text" name="address" class="form-control">
                     </div>
 
-                    <input type="submit" style="margin-left:40%;"  class="col-sm-3 btn btn-success pull-right" name="btn_user_form">
+                    <input type="submit" style="margin-left:40%;" class="col-sm-3 btn btn-success pull-right" name="btn_user_form">
 
                 </form>
 
