@@ -41,3 +41,19 @@ if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
  }
 
 }
+
+//   This is for Delete user
+if(isset($_GET['form']) && $_GET['form']='delete_user_form'){
+
+    // unpacking the Data from the post method
+    $userid = $_POST['userid'];
+
+
+ $delete_user = "delete from users where userid = '$userid'";
+
+ if(mysqli_query($connect ,$delete_user)){
+
+    echo json_encode(array('statusCode'=>'200'));
+ }
+
+}

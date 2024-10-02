@@ -37,6 +37,7 @@ $exe_query = mysqli_query($connect, $query);
                     } ?>
                 </span>
                 <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User's Details</legend>
+                <span id="msg"> </span>
                 <table class="table">
                     <tr>
                         <th>Name</th>
@@ -54,7 +55,7 @@ $exe_query = mysqli_query($connect, $query);
                             <td><?php echo $records['email']; ?></td>
                             <td><?php echo $records['contact']; ?></td>
                             <td><?php echo $records['address']; ?></td>
-                            <td><a href="" class="user_edit_btn bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
+                            <td><a href="" class="user_edit_btn bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="user_delete_btn bi bi-trash" style="color:red;"></a> </td>
                         </tr>
                     <?php  } ?>
                 </table>
@@ -163,6 +164,11 @@ $exe_query = mysqli_query($connect, $query);
 
                         document.getElementById('message').innerHTML = 'User Details update';
                         document.getElementById('message').style.color = 'green';
+                    // setTimeout method is used to execute on your time.
+                        setTimeout(() => {
+
+                            location.reload();
+                        }, 3000);
 
                     }
 
@@ -170,5 +176,41 @@ $exe_query = mysqli_query($connect, $query);
             });
 
         });
+
+        // For Delete Query
+
+        $('.user_delete_btn').click(function() {
+            var row = $(this).closest('tr');
+
+
+            var userid = row.find('td:eq(0)').text();
+
+
+            $.ajax({
+                type: "POST",
+                url: "action.php?form=delete_user_form",
+                data: {
+                    userid: userid
+                },
+                cache: false,
+                success: function(response) {
+
+                    if (response) {
+
+                        document.getElementById('msg').innerHTML = 'User Details Delete';
+                        document.getElementById('msg').style.color = 'red';
+
+                        setTimeout(() => {
+
+                            location.reload();
+                        }, 3000);
+
+                    }
+
+                }
+            });
+
+        });
+
     });
 </script>
