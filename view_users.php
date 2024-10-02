@@ -1,14 +1,15 @@
-<?php 
-  require_once 'config.php';
+<?php
+require_once 'config.php';
 
-  $query = "select *from users";
+$query = "select *from users";
 // PHP mysqli_query()method is used to execute the query 
-  $exe_query = mysqli_query($connect ,$query);
+$exe_query = mysqli_query($connect, $query);
 
 ?>
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,7 +29,7 @@
                 <span style="text-align:center;">
                     <?php if (isset($_GET['alert'])) {
                         if ($_GET['alert'] == 'success') {
-                            echo "<h4 style=color:green; >"."User Created Successfully"."</h4>";
+                            echo "<h4 style=color:green; >" . "User Created Successfully" . "</h4>";
                         } else {
                             echo "Try Again";
                         }
@@ -43,10 +44,15 @@
                         <th>Address</th>
                     </tr>
                     <!-- Embedding PHP into HTML -->
-                    <?php ?>
+                    <?php while ($records = mysqli_fetch_assoc($exe_query)) { ?>
 
-                    <tr></tr>
-                    <?php  ?>
+                        <tr>
+                            <td><?php echo $records['fname']; ?></td>
+                            <td><?php echo $records['email']; ?></td>
+                            <td><?php echo $records['contact']; ?></td>
+                            <td><?php echo $records['address']; ?></td>
+                        </tr>
+                    <?php  } ?>
                 </table>
 
             </div>
