@@ -23,8 +23,21 @@ if (isset($_POST['btn_user_form']) && $_GET['form'] == 'add_user') {
 }
 
 
-
+//   This is for edit user
 if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
 
- print_r($_POST);
+    // unpacking the Data from the post method
+    $userid = $_POST['userid'];
+    $fname = $_POST['fname'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+
+ $update_user = "update users set fname = '$fname' , email = '$email' , contact = '$contact' , address = '$address' where userid = '$userid'";
+
+ if(mysqli_query($connect ,$update_user)){
+
+    echo json_encode(array('statusCode'=>'200'));
+ }
+
 }

@@ -70,12 +70,13 @@ $exe_query = mysqli_query($connect, $query);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit User's</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User's <span id="message"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <form>
 
                         <input type="number" id="userid" name="userid" class="form-control" hidden>
@@ -146,15 +147,23 @@ $exe_query = mysqli_query($connect, $query);
             $.ajax({
                 type: "POST",
                 url: "action.php?form=edit_user_form",
-                data: {userid : userid,
-                       fname:fname,
-                       email:email,
-                       contact:contact,
-                       address:address
+                data: {
+                    userid: userid,
+                    fname: fname,
+                    email: email,
+                    contact: contact,
+                    address: address
                 },
                 cache: false,
-                success: function(data) {
-                 
+                success: function(response) {
+
+                    if (response) {
+
+                        document.getElementById('message').innerHTML = 'User Details update';
+                        document.getElementById('message').style.color = 'green';
+
+                    }
+
                 }
             });
 
