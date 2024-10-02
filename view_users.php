@@ -14,9 +14,10 @@ $exe_query = mysqli_query($connect, $query);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    
 
     <title>Hello, world!</title>
 </head>
@@ -25,7 +26,7 @@ $exe_query = mysqli_query($connect, $query);
     <div class="container">
         <!-- offset used here to take a margin from both side and it will stick into center   -->
         <div class="row">
-            <div class="col-sm-6 offset-3">
+            <div class="col-sm-10 offset-1">
                 <span style="text-align:center;">
                     <?php if (isset($_GET['alert'])) {
                         if ($_GET['alert'] == 'success') {
@@ -35,13 +36,14 @@ $exe_query = mysqli_query($connect, $query);
                         }
                     } ?>
                 </span>
-                <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User Forms</legend>
+                <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User's Details</legend>
                 <table class="table">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Address</th>
+                        <th>Action</th>
                     </tr>
                     <!-- Embedding PHP into HTML -->
                     <?php while ($records = mysqli_fetch_assoc($exe_query)) { ?>
@@ -51,6 +53,7 @@ $exe_query = mysqli_query($connect, $query);
                             <td><?php echo $records['email']; ?></td>
                             <td><?php echo $records['contact']; ?></td>
                             <td><?php echo $records['address']; ?></td>
+                            <td><a href="#" class="bi bi-pencil-square"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
                         </tr>
                     <?php  } ?>
                 </table>
