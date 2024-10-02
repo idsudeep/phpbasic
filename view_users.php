@@ -49,11 +49,12 @@ $exe_query = mysqli_query($connect, $query);
                     <?php while ($records = mysqli_fetch_assoc($exe_query)) { ?>
 
                         <tr>
+                            <td><?php echo $records['userid']; ?></td>
                             <td><?php echo $records['fname']; ?></td>
                             <td><?php echo $records['email']; ?></td>
                             <td><?php echo $records['contact']; ?></td>
                             <td><?php echo $records['address']; ?></td>
-                            <td><a href="#" class="bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
+                            <td><a href="" id="user_edit_btn" class="bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
                         </tr>
                     <?php  } ?>
                 </table>
@@ -65,7 +66,7 @@ $exe_query = mysqli_query($connect, $query);
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,29 +78,30 @@ $exe_query = mysqli_query($connect, $query);
                 <div class="modal-body">
                     <form>
 
+                    <input type="number" id="userid" name="userid" class="form-control" hidden>
                         <div class="form-group">
                             <label>FullName</label>
-                            <input type="text" name="fname" class="form-control">
+                            <input type="text" id="fname" name="fname" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" name="email" class="form-control">
+                            <input type="text" id ="email" name="email" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control">
-                        </div>
+                            <input type="password" id ="password" name="password" class="form-control">
+                        </div> -->
                         <div class="form-group">
                             <label>Contact</label>
-                            <input type="number" name="contact" class="form-control">
+                            <input type="number" id="contact" name="contact" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control">
+                            <input type="text" id="address" name="address" class="form-control">
                         </div>
 
                          </form>
-                         <button  id="user_edit_btn"class="btn btn-primary" style="margin-left:40%">submit</button>
+                         <button  id="user_edit_submit_btn"class="btn btn-primary" style="margin-left:40%">submit</button>
                    
                 </div>
             </div>
@@ -121,11 +123,22 @@ $exe_query = mysqli_query($connect, $query);
 <script>
 $(document).ready(function(){
 
-$('#user_edit_btn').click(function(){
+    $('#user_edit_btn').click(function() {
+        var row = $(this).closest('tr');
+        $('#userid').val(row.find('td:eq(0)').text());
+        $('#fname').val(row.find('td:eq(1)').text());
+        $('#email').val(row.find('td:eq(2)').text());
+        $('#contact').val(row.find('td:eq(3)').text());
+        $('#address').val(row.find('td:eq(4)').text());
 
-console.log('click');
-});
+        
+    });
 
+    $('#user_edit_submit_btn').click(function(){
+
+        var userid = document.getElementById('userid').value;
+            console.log(userid);
+    });
 });
 
 </script>
