@@ -17,7 +17,7 @@ $exe_query = mysqli_query($connect, $query);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    
+
 
     <title>Hello, world!</title>
 </head>
@@ -53,7 +53,7 @@ $exe_query = mysqli_query($connect, $query);
                             <td><?php echo $records['email']; ?></td>
                             <td><?php echo $records['contact']; ?></td>
                             <td><?php echo $records['address']; ?></td>
-                            <td><a href="#" class="bi bi-pencil-square"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
+                            <td><a href="#" class="bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
                         </tr>
                     <?php  } ?>
                 </table>
@@ -63,15 +63,69 @@ $exe_query = mysqli_query($connect, $query);
     </div>
 
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User's</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group">
+                            <label>FullName</label>
+                            <input type="text" name="fname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="number" name="contact" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="address" class="form-control">
+                        </div>
+
+                         </form>
+                         <button  id="user_edit_btn"class="btn btn-primary" style="margin-left:40%">submit</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
 </body>
 
 </html>
+
+<script>
+$(document).ready(function(){
+
+$('#user_edit_btn').click(function(){
+
+console.log('click');
+});
+
+});
+
+</script>
