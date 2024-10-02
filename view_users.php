@@ -54,7 +54,7 @@ $exe_query = mysqli_query($connect, $query);
                             <td><?php echo $records['email']; ?></td>
                             <td><?php echo $records['contact']; ?></td>
                             <td><?php echo $records['address']; ?></td>
-                            <td><a href="" id="user_edit_btn" class="bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
+                            <td><a href="" class="user_edit_btn bi bi-pencil-square" data-toggle="modal" data-target="#exampleModal"></a> | <a href="#" class="bi bi-trash" style="color:red;"></a> </td>
                         </tr>
                     <?php  } ?>
                 </table>
@@ -125,8 +125,10 @@ $exe_query = mysqli_query($connect, $query);
 <script>
     $(document).ready(function() {
 
-        $('#user_edit_btn').click(function() {
+        $('.user_edit_btn').click(function() {
             var row = $(this).closest('tr');
+
+
             $('#userid').val(row.find('td:eq(0)').text());
             $('#fname').val(row.find('td:eq(1)').text());
             $('#email').val(row.find('td:eq(2)').text());
