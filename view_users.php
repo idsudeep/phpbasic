@@ -1,6 +1,14 @@
+<?php 
+  require_once 'config.php';
+
+  $query = "select *from users";
+// PHP mysqli_query()method is used to execute the query 
+  $exe_query = mysqli_query($connect ,$query);
+
+?>
+
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -34,9 +42,11 @@
                         <th>Contact</th>
                         <th>Address</th>
                     </tr>
+                    <!-- Embedding PHP into HTML -->
+                    <?php ?>
 
                     <tr></tr>
-
+                    <?php  ?>
                 </table>
 
             </div>
