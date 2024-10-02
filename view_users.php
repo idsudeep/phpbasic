@@ -66,7 +66,7 @@ $exe_query = mysqli_query($connect, $query);
 
 
     <!-- Modal -->
-    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,14 +78,14 @@ $exe_query = mysqli_query($connect, $query);
                 <div class="modal-body">
                     <form>
 
-                    <input type="number" id="userid" name="userid" class="form-control" hidden>
+                        <input type="number" id="userid" name="userid" class="form-control" hidden>
                         <div class="form-group">
                             <label>FullName</label>
                             <input type="text" id="fname" name="fname" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" id ="email" name="email" class="form-control">
+                            <input type="text" id="email" name="email" class="form-control">
                         </div>
                         <!-- <div class="form-group">
                             <label>Password</label>
@@ -100,20 +100,21 @@ $exe_query = mysqli_query($connect, $query);
                             <input type="text" id="address" name="address" class="form-control">
                         </div>
 
-                         </form>
-                         <button  id="user_edit_submit_btn"class="btn btn-primary" style="margin-left:40%">submit</button>
-                   
+                    </form>
+                    <button id="user_edit_submit_btn" class="btn btn-primary" style="margin-left:40%">submit</button>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
 </body>
@@ -121,24 +122,42 @@ $exe_query = mysqli_query($connect, $query);
 </html>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function() {
 
-    $('#user_edit_btn').click(function() {
-        var row = $(this).closest('tr');
-        $('#userid').val(row.find('td:eq(0)').text());
-        $('#fname').val(row.find('td:eq(1)').text());
-        $('#email').val(row.find('td:eq(2)').text());
-        $('#contact').val(row.find('td:eq(3)').text());
-        $('#address').val(row.find('td:eq(4)').text());
+        $('#user_edit_btn').click(function() {
+            var row = $(this).closest('tr');
+            $('#userid').val(row.find('td:eq(0)').text());
+            $('#fname').val(row.find('td:eq(1)').text());
+            $('#email').val(row.find('td:eq(2)').text());
+            $('#contact').val(row.find('td:eq(3)').text());
+            $('#address').val(row.find('td:eq(4)').text());
 
-        
+
+        });
+
+        $('#user_edit_submit_btn').click(function() {
+
+            var userid = document.getElementById('userid').value;
+            var fname = document.getElementById('fname').value;
+            var email = document.getElementById('email').value;
+            var contact = document.getElementById('contact').value;
+            var address = document.getElementById('address').value;
+
+            $.ajax({
+                type: "POST",
+                url: "action.php?form=edit_user_form",
+                data: {userid : userid,
+                       fname:fname,
+                       email:email,
+                       contact:contact,
+                       address:address
+                },
+                cache: false,
+                success: function(data) {
+                 
+                }
+            });
+
+        });
     });
-
-    $('#user_edit_submit_btn').click(function(){
-
-        var userid = document.getElementById('userid').value;
-            console.log(userid);
-    });
-});
-
 </script>

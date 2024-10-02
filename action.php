@@ -21,3 +21,10 @@ if (isset($_POST['btn_user_form']) && $_GET['form'] == 'add_user') {
         header("location:index.php?alert=success");
     }
 }
+
+
+
+if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
+
+ print_r($_POST);
+}
