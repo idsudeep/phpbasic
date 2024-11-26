@@ -24,7 +24,7 @@ if (isset($_POST['btn_user_form']) && $_GET['form'] == 'add_user') {
 
 
 //   This is for edit user
-if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
+if(isset($_GET['form']) && $_GET['form']=='edit_user_form'){
 
     // unpacking the Data from the post method
     $userid = $_POST['userid'];
@@ -35,6 +35,8 @@ if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
 
  $update_user = "update users set fname = '$fname' , email = '$email' , contact = '$contact' , address = '$address' where userid = '$userid'";
 
+ print_r($update_user);
+ die();
  if(mysqli_query($connect ,$update_user)){
 
     echo json_encode(array('statusCode'=>'200'));
@@ -43,7 +45,7 @@ if(isset($_GET['form']) && $_GET['form']='edit_user_form'){
 }
 
 //   This is for Delete user
-if(isset($_GET['form']) && $_GET['form']='delete_user_form'){
+if(isset($_GET['form']) && $_GET['form']=='delete_user_form'){
 
     // unpacking the Data from the post method
     $userid = $_POST['userid'];
@@ -55,5 +57,26 @@ if(isset($_GET['form']) && $_GET['form']='delete_user_form'){
 
     echo json_encode(array('statusCode'=>'200'));
  }
+
+}
+
+// loginForm
+
+if(isset($_GET['form']) && $_GET['form']=='loginForm'){
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+$query = "select * from users where email = '$email' AND password = '$password'";
+
+$sql = mysqli_query($connect , $query);
+if($sql->num_rows != 0){
+_    echo "logged in ";
+    header("location: view_users.php?alert=success");
+    die();
+}
+echo "invalid User's";
+header("location: login.php?alert=error");
+die();
+
 
 }

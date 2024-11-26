@@ -38,6 +38,7 @@ $exe_query = mysqli_query($connect, $query);
                 </span>
                 <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User's Details</legend>
                 <span id="msg"> </span>
+        
                 <table class="table">
                     <tr>
                         <th>Name</th>
