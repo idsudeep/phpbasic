@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 if (isset($_POST['btn_user_form']) && $_GET['form'] == 'add_user') {
 
@@ -70,13 +71,38 @@ $query = "select * from users where email = '$email' AND password = '$password'"
 
 $sql = mysqli_query($connect , $query);
 if($sql->num_rows != 0){
-_    echo "logged in ";
-    header("location: view_users.php?alert=success");
+$getUserDetails=mysqli_fetch_assoc($sql); //Getting User Details from User's table
+
+  $_SESSION['userid']=$getUserDetails['userid'];
+  
+    header("location: books.php?alert=success");
     die();
 }
 echo "invalid User's";
 header("location: login.php?alert=error");
 die();
 
+
+}
+
+
+if(isset($_GET['form']) && $_GET['form']=='orderForm'){
+
+ $cid = $_POST['userid'];
+ $pid = $_POST['productid'];
+ $qty  = $_POST['qty'];
+ $price = $_POST['price'];
+
+ $amt = $qty * $price;
+$query = "insert into orders (customer_id,product_id,total_amount) values ('$cid', '$pid', '$amt')";
+
+if(mysqli_query($connect , $query)){
+
+    header("location:books.php?alert=success");
+    
+    die();
+}else{ echo "<script> alert('Error on Operation , Please Try again Later.') </script>";
+    header("location:books.php");
+}
 
 }

@@ -28,6 +28,9 @@
                         }
                     } ?>
                 </span>
+                <?php 
+         
+                ?>
                 <legend style="text-align: center; margin-top:25px; margin-bottom: 25px;"> User Forms</legend>
                 <a href="view_users.php">View User's</a>
                 <a href="login.php" style="display: flex;flex-direction:row-reverse;">Login</a>

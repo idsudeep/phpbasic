@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+
 
 $query = "select *from users";
 // PHP mysqli_query()method is used to execute the query 
